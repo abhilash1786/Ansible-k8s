@@ -1,0 +1,19 @@
+---
+- name: Deploy Pod
+  hosts: localhost
+  tasks:
+    - name: Create Pod
+      k8s:
+        definition:
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            name: mypod
+            labels:
+              app: myapp
+          spec:
+            containers:
+              - name: mycontainer
+                image: nginx:latest
+                ports:
+                  - containerPort: 80
